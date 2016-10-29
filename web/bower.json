@@ -1,0 +1,22 @@
+{
+  "name": "Project HackoWeen",
+  "homepage": "https://github.com/cacerrillos/Project-HackoWeen",
+  "authors": [
+    "Carlos Cerrillos <carlos@cerrillostech.com>",
+    "Andy Marquez <bobii144@gmail.com>"
+  ],
+  "description": "",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "^1.7.0"
+  }
+}
