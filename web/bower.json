@@ -27,6 +27,9 @@
     "iron-icons": "^1.1.3",
     "paper-icon-button": "^1.1.3",
     "paper-radio-group": "^1.2.1",
-    "paper-input": "^1.1.20"
+    "paper-input": "^1.1.20",
+    "paper-toolbar": "^1.1.7",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#^1.3.1",
+    "google-map": "GoogleWebComponents/google-map#^1.1.14"
   }
 }
