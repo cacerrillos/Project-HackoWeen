@@ -1,0 +1,80 @@
+<!--
+A comment describing this element
+
+Example:
+
+    <my-elem></my-elem>
+
+Example:
+
+    <my-elem>
+      <h2>Hello my-elem</h2>
+    </my-elem>
+
+@demo demo/index.html
+-->
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/google-map/google-map.html">
+<dom-module id="api-example">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      google-map {
+        width: 300px;
+        height: 300px;
+      }
+    </style>
+<!--     {  
+      "service_request_id":"00114931",
+      "status":"open",
+      "service_name":"Graffiti",
+      "service_code":"56e92d5d601827803f00032e",
+      "description":"graffiti on north side of white barrier which blocks the street",
+      "requested_datetime":"2016-10-29T14:02:20-07:00",
+      "updated_datetime":"2016-10-29T14:17:36-07:00",
+      "address":"4499 40th St, San Diego, CA 92116, USA",
+      "lat":32.758854895129986,
+      "long":-117.10928945465088
+   } -->
+    <iron-ajax
+    auto
+       id="dataAjax"
+       method="GET"
+       url="../../api/1.0/requests"
+       handle-as="json"
+       last-response="{{data}}"
+       on-response="_log"></iron-ajax>
+             
+    <template is="dom-repeat" items="[[data]]" as="entry">
+      <div>[[entry.service_name]]</div>
+      <google-map latitude="[[entry.lat]]" longitude="[[entry.long]]" api-key="AIzaSyBShQ3UuYuc9__vZ2F777H1pJSSIDlremc">
+        <google-map-marker latitude="[[entry.lat]]" longitude="[[entry.long]]"
+      draggable="true" title="[[entry.service_name]]"></google-map-marker>
+
+      </google-map>
+<!--       <google-map latitude="[[entry.lat]]" longitude="[[entry.long]]" api-key="AIzaSyBShQ3UuYuc9__vZ2F777H1pJSSIDlremc"></google-map>
+ -->    </template>
+  </template>
+  <script>
+    Polymer({
+      is: 'api-example',
+      properties: {
+        url: {
+          type: String
+        },
+        data: {
+          type: Object
+        }
+      },
+      ready: function(){
+
+      },
+      _log: function(e) {
+        console.log(e);
+      }
+    });
+  </script>
+</dom-module>
